@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Train Schedule</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container text-center">
+            <h1 class="display-4">Train Schedule</h1>
+            <p class="lead">Enter your train's information and see when the next train is a comin'</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card">
+                    <h5 class="card-header">Current Train Schedule</h5>
+                    <div class="card-body">
+                        <table class="table text-center">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Train Name</th>
+                                    <th scope="col">Destination</th>
+                                    <th scope="col">Frequency (min)</th>
+                                    <th scope="col">Next Arrival</th>
+                                    <th scope="col">Minutes Away</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                        
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <h5 class="card-header">Add train</h5>
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="train">Train Name</label>
+                                <input type="text" class="form-control" id="train-name" placeholder="Hogwarts Express">
+                            </div>
+                            <div class="form-group">
+                                <label for="destination">Destination</label>
+                                <input type="text" class="form-control" id="destination" placeholder="Leavenworth">
+                            </div>
+                            <div class="form-group">
+                                <label for="first-departure">First Train Time (military time)</label>
+                                <input type="number" min="0" max=" 2400" class="form-control" id="first-departure"
+                                    placeholder="1315">
+                            </div>
+                            <div class="form-group">
+                                <label for="departure-frequency">Departure Frequency (min)</label>
+                                <input type="number" min="1" class="form-control" id="departure-frequency"
+                                    placeholder="15">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <input type="reset" class="btn btn-primary">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="assets/javascript/app.js"></script>
+</body>
+
+</html>
