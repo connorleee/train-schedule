@@ -36,7 +36,7 @@
                                     <th scope="col">Minutes Away</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="train-table">
                         
                             </tbody>
                         </table>
@@ -53,15 +53,15 @@
                         <form>
                             <div class="form-group">
                                 <label for="train">Train Name</label>
-                                <input type="text" class="form-control" id="train-name" placeholder="Hogwarts Express">
+                                <input type="text" class="form-control" id="train-name" placeholder="My Horse">
                             </div>
                             <div class="form-group">
                                 <label for="destination">Destination</label>
-                                <input type="text" class="form-control" id="destination" placeholder="Leavenworth">
+                                <input type="text" class="form-control" id="destination" placeholder="Ol' Town Road">
                             </div>
                             <div class="form-group">
                                 <label for="first-departure">First Train Time (military time)</label>
-                                <input type="number" min="0" max=" 2400" class="form-control" id="first-departure"
+                                <input type="number" min="0" max=" 2359" class="form-control" id="first-departure"
                                     placeholder="1315">
                             </div>
                             <div class="form-group">
@@ -70,7 +70,7 @@
                                     placeholder="15">
                             </div>
 
-                            <button type="submit" class="btn btn-primary" id="form-submit">Submit</button>
+                            <button type="button" class="btn btn-primary" id="form-submit">Submit</button>
                             <input type="reset" class="btn btn-primary">
                         </form>
                     </div>
@@ -80,6 +80,7 @@
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="assets/javascript/app.js"></script>
 </body>
