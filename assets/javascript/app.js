@@ -42,19 +42,12 @@ $("#form-submit").click(function () {
     $("#departure-frequency").val("");
 })
 
-// TODO: function to calculate the next arrival and the minutes away
+// Function to calculate the next arrival and the minutes away
 function nextArrival(child) {
-
     // algorithm: elapsedTime (min) = currentTime - 1stArrival; minToNext = elapsedTime % freq
-
-    console.log("child: " + child)
 
     // subtract a year to make sure the first arrival comes before the current time
     var firstArrival = moment(child.firstTrain, "hh:mm").subtract(1, "years");
-    console.log("First arrival: " + firstArrival);
-
-    // var currentTime = moment().format("HH:mm")
-    // console.log("current time: " + currentTime)
 
     var diffTime = moment().diff(moment(firstArrival), "minutes");
     console.log("difference in time: " + diffTime);
