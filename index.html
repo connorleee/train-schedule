@@ -32,12 +32,12 @@
                                     <th scope="col">Train Name</th>
                                     <th scope="col">Destination</th>
                                     <th scope="col">Frequency (min)</th>
-                                    <th scope="col">Next Arrival</th>
                                     <th scope="col">Minutes Away</th>
+                                    <th scope="col">Next Arrival</th>
                                 </tr>
                             </thead>
                             <tbody id="train-table">
-                        
+
                             </tbody>
                         </table>
                     </div>
@@ -61,8 +61,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="first-departure">First Train Time (military time)</label>
-                                <input type="number" min="0" max=" 2359" class="form-control" id="first-departure"
-                                    placeholder="1315">
+                                <input type="time" class="form-control" id="first-departure">
                             </div>
                             <div class="form-group">
                                 <label for="departure-frequency">Departure Frequency (min)</label>

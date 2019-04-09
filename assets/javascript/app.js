@@ -42,28 +42,61 @@ $("#form-submit").click(function () {
     $("#departure-frequency").val("");
 })
 
-database.ref("/trainInfo").on("child_added", function(childSnapshot){
-    console.log(childSnapshot.val())
+// TODO: function to calculate the next arrival and the minutes away
+function nextArrival(child) {
+
+    // algorithm: elapsedTime (min) = currentTime - 1stArrival; minToNext = elapsedTime % freq
+
+    console.log("child: " + child)
+
+    // subtract a year to make sure the first arrival comes before the current time
+    var firstArrival = moment(child.firstTrain, "hh:mm").subtract(1, "years");
+    console.log("First arrival: " + firstArrival);
+
+    // var currentTime = moment().format("HH:mm")
+    // console.log("current time: " + currentTime)
+
+    var diffTime = moment().diff(moment(firstArrival), "minutes");
+    console.log("difference in time: " + diffTime);
+
+    var freq = child.departureFreq;
+    console.log("frequency: " + freq);
+
+    var tRemainder = diffTime % freq;
+    console.log("remainder: " + tRemainder) 
+
+    var tMinutesTillNext = freq - tRemainder;
+    console.log("t minus: " + tMinutesTillNext)
+
+    var nextArrival = moment().add(tMinutesTillNext, "minutes").format("hh:mm A");
+
+    var returnArr = [tMinutesTillNext, nextArrival];
+
+    return returnArr
+}
+
+database.ref("/trainInfo").on("child_added", function (childSnapshot) {
+    var child = childSnapshot.val()
+    console.log(child)
 
     var trainNameRecent = childSnapshot.val().trainName;
     var destinationRecent = childSnapshot.val().destination;
-    var firstTrainRecent = childSnapshot.val().firstTrain;
     var departureFreqRecent = childSnapshot.val().departureFreq;
-
-    // TODO: funciton to calculate the next arrival and the minutes away
-    // TODO: figure out a better way of controlling how the time is displayed and received by the user input.
+    
+    var arrivalInfo = nextArrival(child)
+    console.log(arrivalInfo)
 
     var newRow = $("<tr>").append(
         $("<td>").text(trainNameRecent),
         $("<td>").text(destinationRecent),
         $("<td>").text(departureFreqRecent),
-        // $("<td>").text(nextArrival),
-        // $("<td>").text(minutesAway)
-
+        $("<td>").text(arrivalInfo[0]),
+        $("<td>").text(arrivalInfo[1])
     )
-    
+
     $("#train-table").append(newRow);
 })
 
-// TODO: figure out way to reset the train schedule if wanted to 
+
+// TODO: figure out way to reset the train schedule if wanted to
 // TODO: have the train schedule timers automatically update over time
